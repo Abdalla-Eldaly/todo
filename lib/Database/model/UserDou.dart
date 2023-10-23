@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo_list/Database/model/User.dart';
 
 class UserDou {
-  static CollectionReference<User> getcollectoin() {
+  static CollectionReference<User> getcollectoin([String? uid]) {
     var db = FirebaseFirestore.instance;
     var CollectionUser = db.collection(User.CollectionName).withConverter(
           fromFirestore: (snapshot, options) =>
@@ -18,9 +18,17 @@ class UserDou {
     return doc.set(user);
   }
 
-  static Future<User?>getUser(String? Uid) async {
-    var doc = getcollectoin().doc(Uid);
-    var snapshot = await doc.get();
-    return snapshot.data();
+  static Future<User?> getUser(String uid) async{
+    var doc = getcollectoin()
+        .doc(uid);
+
+    var docSnapshot = await doc.get();
+
+    return docSnapshot.data();
+  }
+  static getallusertasks(String uid) async {
+    var snapshotdoc = await getcollectoin(uid).get();
+    var doc = await snapshotdoc.docs;
+    doc.map((snapshot) => snapshot.data()).toList();
   }
 }

@@ -8,7 +8,6 @@ import 'package:todo_list/DialogUtalites.dart';
 import 'package:todo_list/Provider/Authprovider/Authprovider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class showsheet extends StatefulWidget {
   @override
   State<showsheet> createState() => _showsheetState();
@@ -142,15 +141,13 @@ class _showsheetState extends State<showsheet> {
 
     messagestate.Showloading(context, 'Creating Task...');
 
-  await TaskDou.creattask(task, authprovider.databaseuser!.id!);
+    await TaskDou.creattask(task, authprovider.databaseuser!.id!);
     messagestate.ShowHiding(context);
-    messagestate.Showmessage(context, message: 'Task created Successfully',
-    posActiontitle: 'OK',
-      posAction: (){
+    messagestate.Showmessage(context,
+        message: 'Task created Successfully',
+        posActiontitle: 'OK', posAction: () {
       Navigator.pop(context);
-      }
-
-    );
+    });
   }
 
   DateTime? selecteddata;

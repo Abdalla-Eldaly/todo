@@ -31,7 +31,9 @@ class MyApp extends StatelessWidget {
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: Color(0xFe5D9CEC)),
         scaffoldBackgroundColor: Color(0xFFDEEBDA),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+        primary:  Color(0xFe5D9CEC)),
         useMaterial3: false,
       ),
       routes: {
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         HomePage.RouteName: (_) => HomePage(),
         Splashscreen.RouteName:(_)=>Splashscreen()
       },
-      initialRoute: Register.RouteName,
+      initialRoute: Splashscreen.RouteName,
     );
   }
 }

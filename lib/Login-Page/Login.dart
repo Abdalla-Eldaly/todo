@@ -21,13 +21,14 @@ class _LoginState extends State<Login> {
       TextEditingController(text: 'abdalla@gmail.com');
 
   TextEditingController password = TextEditingController(text: 'Toot469@ab');
-
   DialogShown meassagestate = DialogShown();
 
   var FormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    bool passwordVisible = true;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -57,6 +58,8 @@ class _LoginState extends State<Login> {
                 },
                 controller: email,
                 labeltext: 'Email',
+                prefixIcon: Icons.person,
+
                 keyboardtype: TextInputType.emailAddress,
                 obscuretext: false,
               ),
@@ -72,6 +75,13 @@ class _LoginState extends State<Login> {
                 },
                 controller: password,
                 labeltext: 'Password',
+                prefixIcon: Icons.lock,
+                togglePasswordVisibility: true, // Specify whether to display the toggle button
+                togglePasswordCallback: (isVisible) {
+                  setState(() {
+                    passwordVisible = isVisible;
+                  });
+                },
                 keyboardtype: TextInputType.text,
                 obscuretext: true,
               ),
@@ -90,7 +100,7 @@ class _LoginState extends State<Login> {
                   onPressed: () {
                     Loginpress();
                   },
-                  child: Row(
+                  child:const Row(
                     children: [
                       Expanded(
                         child: Align(

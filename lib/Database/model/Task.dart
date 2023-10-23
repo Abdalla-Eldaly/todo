@@ -15,13 +15,14 @@ class Task {
       this.isdone = false});
 
 
-  Task.fromfirestore(Map<String, dynamic>? data) {
-    id = data?[id];
-    title = data?[title];
-    description = data?[description];
-    datatime = data?[datatime];
-    isdone = data?[isdone];
-  }
+  Task.fromfirestore(Map<String, dynamic>? data)
+      : this(
+      id: data?['id'],
+      title: data?['title'],
+      description: data?['description'],
+      datatime: data?['datatime'],
+      isdone: data?['isdone']
+  );
 
   Map<String, dynamic> tofirestore() {
     return {

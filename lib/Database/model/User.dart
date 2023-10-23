@@ -7,10 +7,12 @@ class User {
   User({this.email, this.id, this.Fullnamed, this.Username});
 
   User.fromfirestore(Map<String, dynamic>? data) {
-    id = data?[id];
-    Fullnamed = data?[Fullnamed];
-    Username = data?[Username];
-    email = data?[email];
+    if (data != null) {
+      id = data['id'];
+      Fullnamed = data['Fullnamed'];
+      Username = data['Username'];
+      email = data['email'];
+    }
   }
 
   Map<String, dynamic> tofirestore() {
