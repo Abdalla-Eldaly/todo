@@ -34,6 +34,7 @@ class _RegisterState extends State<Register> {
   DialogShown messagestate = DialogShown();
 
   var FormKey = GlobalKey<FormState>();
+  bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +64,7 @@ class _RegisterState extends State<Register> {
                 },
                 controller: FullName,
                 labeltext: 'FullName',
+                prefixIcon: Icons.person_pin_rounded,
                 keyboardtype: TextInputType.name,
                 obscuretext: false,
               ),
@@ -75,6 +77,7 @@ class _RegisterState extends State<Register> {
                 },
                 controller: username,
                 labeltext: 'UserName',
+                prefixIcon: Icons.person,
                 keyboardtype: TextInputType.text,
                 obscuretext: false,
               ),
@@ -90,6 +93,7 @@ class _RegisterState extends State<Register> {
                 },
                 controller: email,
                 labeltext: 'Email',
+                prefixIcon: Icons.email_rounded,
                 keyboardtype: TextInputType.emailAddress,
                 obscuretext: false,
               ),
@@ -105,7 +109,9 @@ class _RegisterState extends State<Register> {
                 },
                 controller: password,
                 labeltext: 'Password',
+
                 keyboardtype: TextInputType.text,
+                prefixIcon: Icons.lock_person_rounded,
                 obscuretext: true,
               ),
               CommonTextFormField(
@@ -118,8 +124,15 @@ class _RegisterState extends State<Register> {
                 },
                 controller: passwordcomfirmation,
                 labeltext: 'Password comfirmation',
+                togglePasswordVisibility: true, // Specify whether to display the toggle button
+                togglePasswordCallback: (isVisible) {
+                  setState(() {
+                    passwordVisible = isVisible;
+                  });
+                },
                 keyboardtype: TextInputType.text,
                 obscuretext: true,
+                prefixIcon: Icons.lock_outlined,
               ),
               const SizedBox(
                 height: 20,

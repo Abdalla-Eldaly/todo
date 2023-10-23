@@ -32,6 +32,7 @@ class Authproviderr extends ChangeNotifier {
     var user = await UserDou.getUser(credential.user!.uid);
     databaseuser = user;
     authfirebaseuser = credential.user;
+    notifyListeners();
   }
 
   void logout() {
